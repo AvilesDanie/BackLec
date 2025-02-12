@@ -2,7 +2,8 @@ const User = require('../models/user');
 const mongoose = require('mongoose');
 const Exercise = require('../models/exercise');
 const axios = require('axios'); // Asegúrate de importar axios para hacer solicitudes HTTP
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
+
 const jwt = require('jsonwebtoken');
 
 
