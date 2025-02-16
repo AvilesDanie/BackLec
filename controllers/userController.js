@@ -141,10 +141,11 @@ const updateUserProgressUnified = async (req, res) => {
     user.level = Math.floor(user.experiencePoints / 1000);
 
     // Asegurarse de no duplicar desafíos completados
-    if (!user.completedChallenges.includes(exercise._id)) {
+    if (successful && !user.completedChallenges.includes(exercise._id)) {
       user.completedChallenges.push(exercise._id);
     }
 
+    // Calcular el progreso basado en los desafíos completados
     user.progress = Math.min((user.completedChallenges.length * 100) / 10, 100);
 
     // Manejar los tags en caso de éxito o error
