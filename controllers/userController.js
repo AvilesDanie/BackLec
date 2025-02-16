@@ -85,15 +85,17 @@ const deleteUser = async (req, res) => {
 // Actualizar los puntos de experiencia y nivel de un usuario
 const updateUser = async (req, res) => {
   try {
-    const { experiencePoints, level } = req.body;
+    const { experiencePoints, level, progress } = req.body;
     const user = await User.findById(req.params.id);
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    user.experiencePoints = experiencePoints;
-    user.level = level;
+    // Actualizar solo los campos proporcionados
+    if (experiencePoints !== undefined) user.experiencePoints = experiencePoints;
+    if (level !== undefined) user.level = level;
+    if (progress !== undefined) user.progress = progress;
 
     await user.save();
     res.json(user);
