@@ -18,7 +18,7 @@ const createUser = async (req, res) => {
   try {
       const existingUser = await User.findOne({ email });
       if (existingUser) {
-          return res.status(400).json({ message: "El usuario ya está registrado" });
+          return res.status(200).json({ message: "El usuario ya está registrado" });
       }
 
       const salt = await bcrypt.genSalt(10);
