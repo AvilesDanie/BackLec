@@ -2,6 +2,7 @@ const Exercise = require('../models/exercise');
 const axios = require('axios');
 const User = require('../models/user');
 const mongoose = require('mongoose'); // Importar Mongoose
+const crypto = require('crypto');
 
 // Crear un nuevo ejercicio
 const createExercise = async (req, res) => {
@@ -224,7 +225,7 @@ const getRandomExercisesExcludingId = async (req, res) => {
     // Seleccionar tres ejercicios aleatorios
     const randomExercises = [];
     while (randomExercises.length < 3) {
-      const randomIndex = Math.floor(Math.random() * exercises.length);
+      const randomIndex = Math.floor(crypto.randomBytes(1) * exercises.length);
       const randomExercise = exercises[randomIndex];
       if (!randomExercises.includes(randomExercise)) {
         randomExercises.push(randomExercise);

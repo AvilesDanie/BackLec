@@ -8,6 +8,21 @@ const codewarsRoutes = require('./routes/codewarsRoutes'); // Importar las rutas
 const codeEvaluationRoutes = require('./routes/codeEvaluationRoutes'); // Importar las rutas de evaluación
 require('dotenv').config();
 
+
+/*
+let corsOptions = {
+  origin: 'trustedwebsite.com' // Compliant
+};
+
+let example = express();
+example.disable("x-powered-by");
+
+app.use(cors(corsOptions));
+
+app.use(express.json());
+*/
+
+
 const app = express();
 
 app.use(cors());
